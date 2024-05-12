@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nextjs-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-nextjs-app
+  template:
+    metadata:
+      labels:
+        app: my-nextjs-app
+    spec:
+      containers:
+        - name: my-nextjs-app
+          image: martinhodges/my-nextjs-app-img:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
